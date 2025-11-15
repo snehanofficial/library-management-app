@@ -33,11 +33,77 @@ export const getAllBooks = () => {
     });
 };
 
-// Get all Books
+// Get all Categories
 export const getAllCategories = () => {
     return new Promise((resolve, reject) => {
         const sql = "SELECT * FROM categories";
         db.query(sql, [], (err, results) => {
+            if (err) reject(err);
+            else resolve(results);
+        });
+    });
+};
+
+// Get a Book by ID
+export const getBookById = (id) => {
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM books where id = ?";
+        db.query(sql, [id], (err, results) => {
+            if (err) reject(err);
+            else resolve(results);
+        });
+    });
+};
+
+// Get a Category by ID
+export const getCategoryById = (id) => {
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM categories where id = ?";
+        db.query(sql, [id], (err, results) => {
+            if (err) reject(err);
+            else resolve(results);
+        });
+    });
+};
+
+// Update a Book by ID
+export const updateBook = (id, data) => {
+    return new Promise((resolve, reject) => {
+        const sql = "update books set ? where id =?"
+        db.query(sql, [data, id], (err, results) => {
+            if (err) reject(err);
+            else resolve(results);
+        });
+    });
+};
+
+// Update a Category by ID
+export const updateCategory = (id, data) => {
+    return new Promise((resolve, reject) => {
+        const sql = "update category set ? where id =?"
+        db.query(sql, [data, id], (err, results) => {
+            if (err) reject(err);
+            else resolve(results);
+        });
+    });
+};
+
+// Delete a Book by ID
+export const deleteBook = (id) => {
+    return new Promise((resolve, reject) => {
+        const sql = "delete books where id = ?"
+        db.query(sql, [id], (err, results) => {
+            if (err) reject(err);
+            else resolve(results);
+        });
+    });
+};
+
+// Delete a Category by ID
+export const deleteCategory= (id) => {
+    return new Promise((resolve, reject) => {
+        const sql = "delete categories where id = ?"
+        db.query(sql, [id], (err, results) => {
             if (err) reject(err);
             else resolve(results);
         });
