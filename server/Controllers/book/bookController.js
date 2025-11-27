@@ -26,7 +26,7 @@ export const getABook = async (req, res) => {
 };
 
 // List Categories Controller
-export const getCategory = async (req, res) => {
+export const getCategories = async (req, res) => {
     try {
         const books = await getAllCategories();
         return res.status(200).json(books);
@@ -44,7 +44,7 @@ export const createBook = async (req, res) => {
         }
         
         const result = await insertBook(data);
-        return res.status(201).json({msg: 'Book added successfully!', result});
+        return res.status(201).json({msg: 'Book added successfully!'});
     } catch (err) {
         return res.status(500).json({msg: 'Server error', err});
     }
@@ -55,11 +55,11 @@ export const createCategory = async (req, res) => {
     try {
         const data = req.body;
         if (!data) {
-            return res.status(500).json({msg: 'Category details should not be null'});
+            return res.status(500).json({msg: 'Category details in body should not be empty'});
         }
         
         const result = await insertCategory(data);
-        return res.status(201).json({msg: 'Category added successfully!', result});
+        return res.status(201).json({msg: 'Category added successfully!'});
     } catch (err) {
         return res.status(500).json({msg: 'Server error', err});
     }

@@ -18,3 +18,13 @@ CREATE TABLE books (
     updated_at timestamp default current_timestamp on update current_timestamp,
     foreign key (category_id) references categories (id)
 );
+
+create table users (
+    id int primary key AUTO_INCREMENT,
+    name varchar(150) not null,
+    email varchar(150) not null,
+    password varchar(255) not null,
+    is_admin bool default false,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp
+);

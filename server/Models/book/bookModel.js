@@ -55,17 +55,6 @@ export const getBookById = (id) => {
     });
 };
 
-// Get a Category by ID
-export const getCategoryById = (id) => {
-    return new Promise((resolve, reject) => {
-        const sql = "SELECT * FROM categories where id = ?";
-        db.query(sql, [id], (err, results) => {
-            if (err) reject(err);
-            else resolve(results);
-        });
-    });
-};
-
 // Update a Book by ID
 export const updateBook = (id, data) => {
     return new Promise((resolve, reject) => {
